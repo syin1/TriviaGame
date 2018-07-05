@@ -29,3 +29,11 @@ html {
 .jumbotron {
   height: 100%;
 }
+
+#option1:hover,
+#option2:hover,
+#option3:hover,
+#option4:hover {
+  background-color: yellow;
+  border: 1px solid black;
+}
