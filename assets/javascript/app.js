@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  var intervalId;
+  var timer = 30;
+
   var questions = [
     {
       question: 'What year did Albert Einstein die?',
@@ -70,16 +73,27 @@ $(document).ready(function() {
       option2: 'The Bhat',
       option3: 'Real',
       option4: 'Krona',
-      answer: 'Walt Disney'
+      answer: 'Real'
     }
   ];
 
-  $('.btn-primary').on('click', function() {
-    $('#question').html('<h3>' + questions[1].question + '</h3>');
+  function displayQuestion(i) {
+    $('#question').html('<h3>' + questions[i].question + '</h3>');
 
-    $('#option1').html('<p>' + questions[1].option1 + '</p>');
-    $('#option2').html('<p>' + questions[1].option2 + '</p>');
-    $('#option3').html('<p>' + questions[1].option3 + '</p>');
-    $('#option4').html('<p>' + questions[1].option4 + '</p>');
+    $('#option1').html('<p>' + questions[i].option1 + '</p>');
+    $('#option2').html('<p>' + questions[i].option2 + '</p>');
+    $('#option3').html('<p>' + questions[i].option3 + '</p>');
+    $('#option4').html('<p>' + questions[i].option4 + '</p>');
+  }
+
+  function displayTimer() {
+    $('#timeremaining').html('<h4>Time Remaining: ' + timer + ' Seconds</h4>');
+    timer--;
+  }
+
+  $('.btn-primary').on('click', function() {
+    displayTimer();
+    displayQuestion(5);
+    intervalId = setInterval(displayTimer, 1000);
   });
 });
