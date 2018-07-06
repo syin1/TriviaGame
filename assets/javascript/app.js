@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var intervalId;
   var timeoutId;
-  var timer = 10;
+  var timer = 5;
 
   var questions = [
     {
@@ -91,7 +91,7 @@ $(document).ready(function() {
     $('#timeremaining').html('<h4>Time Remaining: ' + timer + ' Seconds</h4>');
     if (timer === 0) {
       clearInterval(intervalId);
-      timer = 10;
+      timer = 5;
       $('#question').html('<h3>Out of Time!</h3>');
       $('#option1').text('');
       $('#option2').html(
@@ -113,7 +113,7 @@ $(document).ready(function() {
 
   $('#option1').on('click', function() {
     clearInterval(intervalId);
-    timer = 10;
+    timer = 5;
 
     if ($(this).text() === questions[5].answer) {
       $('#question').html('<h3>Correct!</h3>');
@@ -131,7 +131,45 @@ $(document).ready(function() {
 
   $('#option2').on('click', function() {
     clearInterval(intervalId);
-    timer = 10;
+    timer = 5;
+
+    if ($(this).text() === questions[5].answer) {
+      $('#question').html('<h3>Correct!</h3>');
+      $('#option2').text('');
+    } else {
+      $('#question').html('<h3>Nope!</h3>');
+      $('#option2').html(
+        '<p>The correct answer was: ' + questions[5].answer + '</p>'
+      );
+    }
+
+    $('#option1').text('');
+    $('#option3').text('');
+    $('#option4').text('');
+  });
+
+  $('#option3').on('click', function() {
+    clearInterval(intervalId);
+    timer = 5;
+
+    if ($(this).text() === questions[5].answer) {
+      $('#question').html('<h3>Correct!</h3>');
+      $('#option2').text('');
+    } else {
+      $('#question').html('<h3>Nope!</h3>');
+      $('#option2').html(
+        '<p>The correct answer was: ' + questions[5].answer + '</p>'
+      );
+    }
+
+    $('#option1').text('');
+    $('#option3').text('');
+    $('#option4').text('');
+  });
+
+  $('#option4').on('click', function() {
+    clearInterval(intervalId);
+    timer = 5;
 
     if ($(this).text() === questions[5].answer) {
       $('#question').html('<h3>Correct!</h3>');
