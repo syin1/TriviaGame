@@ -1,8 +1,7 @@
 $(document).ready(function() {
   var intervalId;
-  var timeoutId;
   var timer = 5;
-  var questionindex = -1;
+  var questionindex = 0;
 
   var questions = [
     {
@@ -89,19 +88,23 @@ $(document).ready(function() {
   }
 
   function nextQuestion() {
+    $('#correctanswer').text('');
     questionindex++;
     displayQuestion();
     if (questionindex === questions.length - 1) {
       questionindex = 0;
     }
+    displayTimer();
+    intervalId = setInterval(displayTimer, 1000);
   }
 
   function outOfTime() {
     $('#question').html('<h3>Out of Time!</h3>');
-    $('#option1').text('');
-    $('#option2').html(
+    $('#correctanswer').html(
       '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
     );
+    $('#option1').text('');
+    $('#option2').text('');
     $('#option3').text('');
     $('#option4').text('');
   }
@@ -131,23 +134,19 @@ $(document).ready(function() {
       clearInterval(intervalId);
       timer = 5;
       outOfTime();
-      // countDown();
+      countDown();
     } else {
       timer--;
     }
   }
 
-  // function countDown() {
-  //   if (questionindex === question.length) {
-  //     questionindex = 0;
-  //   }
-  //   setTimeout(displayTimer, 3000);
-  //   setTimeout(displayQuestion(questionindex), 3000);
-  // }
+  function countDown() {
+    setTimeout(nextQuestion, 3000);
+  }
 
-  $('.btn-primary').on('click', function() {
+  $('.start').on('click', function() {
     displayTimer();
-    nextQuestion();
+    displayQuestion();
 
     intervalId = setInterval(displayTimer, 1000);
   });
@@ -161,6 +160,7 @@ $(document).ready(function() {
     } else {
       displayWrongAnswer();
     }
+    countDown();
   });
 
   $('#option2').on('click', function() {
@@ -172,6 +172,7 @@ $(document).ready(function() {
     } else {
       displayWrongAnswer();
     }
+    countDown();
   });
 
   $('#option3').on('click', function() {
@@ -183,6 +184,7 @@ $(document).ready(function() {
     } else {
       displayWrongAnswer();
     }
+    countDown();
   });
 
   $('#option4').on('click', function() {
@@ -194,5 +196,6 @@ $(document).ready(function() {
     } else {
       displayWrongAnswer();
     }
+    countDown();
   });
 });
