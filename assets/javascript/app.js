@@ -3,6 +3,10 @@ $(document).ready(function() {
   var timer = 5;
   var questionindex = 0;
 
+  var correctno = 0;
+  var wrongno = 0;
+  var unansweredno = 0;
+
   var questions = [
     {
       question: 'What year did Albert Einstein die?',
@@ -91,9 +95,9 @@ $(document).ready(function() {
     $('#correctanswer').text('');
     questionindex++;
     displayQuestion();
-    if (questionindex === questions.length - 1) {
-      questionindex = 0;
-    }
+    // if (questionindex === questions.length - 1) {
+    //   questionindex = 0;
+    // }
     displayTimer();
     intervalId = setInterval(displayTimer, 1000);
   }
@@ -133,6 +137,7 @@ $(document).ready(function() {
     if (timer === 0) {
       clearInterval(intervalId);
       timer = 5;
+      unansweredno++;
       outOfTime();
       countDown();
     } else {
@@ -140,8 +145,26 @@ $(document).ready(function() {
     }
   }
 
+  function summaryStats() {
+    $('#question').html("<h3>All done, here's how you did!</h3>");
+    $('#timeremaining').text('');
+    $('#correctanswer').text('');
+    $('#option1').text('');
+    $('#option2').text('');
+    $('#option3').text('');
+    $('#option4').text('');
+
+    $('#correctno').text('Correct Answers: ' + correctno);
+    $('#wrongno').text('Incorrect Answers: ' + wrongno);
+    $('#unansweredno').text('Unanswered: ' + unansweredno);
+  }
+
   function countDown() {
-    setTimeout(nextQuestion, 3000);
+    if (questionindex === questions.length - 1) {
+      summaryStats();
+    } else {
+      setTimeout(nextQuestion, 3000);
+    }
   }
 
   $('.start').on('click', function() {
@@ -157,8 +180,10 @@ $(document).ready(function() {
 
     if ($(this).text() === questions[questionindex].answer) {
       displayCorrectAnswer();
+      correctno++;
     } else {
       displayWrongAnswer();
+      wrongno++;
     }
     countDown();
   });
@@ -169,8 +194,10 @@ $(document).ready(function() {
 
     if ($(this).text() === questions[questionindex].answer) {
       displayCorrectAnswer();
+      correctno++;
     } else {
       displayWrongAnswer();
+      wrongno++;
     }
     countDown();
   });
@@ -181,8 +208,10 @@ $(document).ready(function() {
 
     if ($(this).text() === questions[questionindex].answer) {
       displayCorrectAnswer();
+      correctno++;
     } else {
       displayWrongAnswer();
+      wrongno++;
     }
     countDown();
   });
@@ -193,8 +222,10 @@ $(document).ready(function() {
 
     if ($(this).text() === questions[questionindex].answer) {
       displayCorrectAnswer();
+      correctno++;
     } else {
       displayWrongAnswer();
+      wrongno++;
     }
     countDown();
   });
