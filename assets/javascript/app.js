@@ -91,9 +91,38 @@ $(document).ready(function() {
   function nextQuestion() {
     questionindex++;
     displayQuestion();
-    if (questionindex === questions.length) {
+    if (questionindex === questions.length - 1) {
       questionindex = 0;
     }
+  }
+
+  function outOfTime() {
+    $('#question').html('<h3>Out of Time!</h3>');
+    $('#option1').text('');
+    $('#option2').html(
+      '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
+    );
+    $('#option3').text('');
+    $('#option4').text('');
+  }
+
+  function displayCorrectAnswer() {
+    $('#question').html('<h3>Correct!</h3>');
+    $('#option1').text('');
+    $('#option2').text('');
+    $('#option3').text('');
+    $('#option4').text('');
+  }
+
+  function displayWrongAnswer() {
+    $('#question').html('<h3>Nope!</h3>');
+    $('#correctanswer').html(
+      '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
+    );
+    $('#option1').text('');
+    $('#option2').text('');
+    $('#option3').text('');
+    $('#option4').text('');
   }
 
   function displayTimer() {
@@ -101,13 +130,7 @@ $(document).ready(function() {
     if (timer === 0) {
       clearInterval(intervalId);
       timer = 5;
-      $('#question').html('<h3>Out of Time!</h3>');
-      $('#option1').text('');
-      $('#option2').html(
-        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
-      );
-      $('#option3').text('');
-      $('#option4').text('');
+      outOfTime();
       // countDown();
     } else {
       timer--;
@@ -134,17 +157,10 @@ $(document).ready(function() {
     timer = 5;
 
     if ($(this).text() === questions[questionindex].answer) {
-      $('#question').html('<h3>Correct!</h3>');
+      displayCorrectAnswer();
     } else {
-      $('#question').html('<h3>Nope!</h3>');
-      $('#option2').html(
-        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
-      );
+      displayWrongAnswer();
     }
-
-    $('#option1').text('');
-    $('#option3').text('');
-    $('#option4').text('');
   });
 
   $('#option2').on('click', function() {
@@ -152,18 +168,10 @@ $(document).ready(function() {
     timer = 5;
 
     if ($(this).text() === questions[questionindex].answer) {
-      $('#question').html('<h3>Correct!</h3>');
-      $('#option2').text('');
+      displayCorrectAnswer();
     } else {
-      $('#question').html('<h3>Nope!</h3>');
-      $('#option2').html(
-        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
-      );
+      displayWrongAnswer();
     }
-
-    $('#option1').text('');
-    $('#option3').text('');
-    $('#option4').text('');
   });
 
   $('#option3').on('click', function() {
@@ -171,18 +179,10 @@ $(document).ready(function() {
     timer = 5;
 
     if ($(this).text() === questions[questionindex].answer) {
-      $('#question').html('<h3>Correct!</h3>');
-      $('#option2').text('');
+      displayCorrectAnswer();
     } else {
-      $('#question').html('<h3>Nope!</h3>');
-      $('#option2').html(
-        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
-      );
+      displayWrongAnswer();
     }
-
-    $('#option1').text('');
-    $('#option3').text('');
-    $('#option4').text('');
   });
 
   $('#option4').on('click', function() {
@@ -190,17 +190,9 @@ $(document).ready(function() {
     timer = 5;
 
     if ($(this).text() === questions[questionindex].answer) {
-      $('#question').html('<h3>Correct!</h3>');
-      $('#option2').text('');
+      displayCorrectAnswer();
     } else {
-      $('#question').html('<h3>Nope!</h3>');
-      $('#option2').html(
-        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
-      );
+      displayWrongAnswer();
     }
-
-    $('#option1').text('');
-    $('#option3').text('');
-    $('#option4').text('');
   });
 });
