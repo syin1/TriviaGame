@@ -95,9 +95,6 @@ $(document).ready(function() {
     $('#correctanswer').text('');
     questionindex++;
     displayQuestion();
-    // if (questionindex === questions.length - 1) {
-    //   questionindex = 0;
-    // }
     displayTimer();
     intervalId = setInterval(displayTimer, 1000);
   }
@@ -230,5 +227,22 @@ $(document).ready(function() {
       wrongno++;
     }
     countDown();
+  });
+
+  $('.startover').on('click', function() {
+    $('.startover').hide();
+    $('#correctno').text('');
+    $('#wrongno').text('');
+    $('#unansweredno').text('');
+
+    questionindex = 0;
+    correctno = 0;
+    wrongno = 0;
+    unansweredno = 0;
+
+    displayTimer();
+    displayQuestion();
+
+    intervalId = setInterval(displayTimer, 1000);
   });
 });
