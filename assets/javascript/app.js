@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var intervalId;
-  var timer = 5;
+  var timer = 15;
   var questionindex = 0;
 
   var correctno = 0;
@@ -136,7 +136,7 @@ $(document).ready(function() {
     $('#timeremaining').html('<h4>Time Remaining: ' + timer + ' Seconds</h4>');
     if (timer === 0) {
       clearInterval(intervalId);
-      timer = 5;
+      timer = 15;
       unansweredno++;
       outOfTime();
       countDown();
@@ -157,6 +157,8 @@ $(document).ready(function() {
     $('#correctno').text('Correct Answers: ' + correctno);
     $('#wrongno').text('Incorrect Answers: ' + wrongno);
     $('#unansweredno').text('Unanswered: ' + unansweredno);
+
+    $('.startover').show();
   }
 
   function countDown() {
@@ -176,7 +178,7 @@ $(document).ready(function() {
 
   $('#option1').on('click', function() {
     clearInterval(intervalId);
-    timer = 5;
+    timer = 15;
 
     if ($(this).text() === questions[questionindex].answer) {
       displayCorrectAnswer();
@@ -190,7 +192,7 @@ $(document).ready(function() {
 
   $('#option2').on('click', function() {
     clearInterval(intervalId);
-    timer = 5;
+    timer = 15;
 
     if ($(this).text() === questions[questionindex].answer) {
       displayCorrectAnswer();
@@ -204,7 +206,7 @@ $(document).ready(function() {
 
   $('#option3').on('click', function() {
     clearInterval(intervalId);
-    timer = 5;
+    timer = 15;
 
     if ($(this).text() === questions[questionindex].answer) {
       displayCorrectAnswer();
@@ -218,7 +220,7 @@ $(document).ready(function() {
 
   $('#option4').on('click', function() {
     clearInterval(intervalId);
-    timer = 5;
+    timer = 15;
 
     if ($(this).text() === questions[questionindex].answer) {
       displayCorrectAnswer();
