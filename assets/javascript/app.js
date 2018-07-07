@@ -14,7 +14,8 @@ $(document).ready(function() {
       option2: '1949',
       option3: '1960',
       option4: '1955',
-      answer: '1955'
+      answer: '1955',
+      image: 'assets/images/q1.gif'
     },
     {
       question: 'Which is the largest planet in the solar system?',
@@ -22,7 +23,8 @@ $(document).ready(function() {
       option2: 'Neptune',
       option3: 'Earth',
       option4: 'Mars',
-      answer: 'Jupiter'
+      answer: 'Jupiter',
+      image: 'assets/images/q2.gif'
     },
     {
       question: 'What colour is Cerulean?',
@@ -30,7 +32,8 @@ $(document).ready(function() {
       option2: 'Blue',
       option3: 'Yellow',
       option4: 'Green',
-      answer: 'Blue'
+      answer: 'Blue',
+      image: 'assets/images/q3.gif'
     },
     {
       question: 'What are a group of Dolphins called?',
@@ -38,15 +41,17 @@ $(document).ready(function() {
       option2: 'Herd',
       option3: 'Pod',
       option4: 'Pool',
-      answer: 'Pod'
+      answer: 'Pod',
+      image: 'assets/images/q4.gif'
     },
     {
       question: 'Who invented Penicillin?',
-      option1: 'Alexandra Fleming',
+      option1: 'Alexander Fleming',
       option2: 'Thomas Edison',
       option3: 'Marie Curie',
       option4: 'George Orwell',
-      answer: 'Alexandra Fleming'
+      answer: 'Alexander Fleming',
+      image: 'assets/images/q5.gif'
     },
     {
       question: 'What date was President John F Kennedy assassinated?',
@@ -54,7 +59,8 @@ $(document).ready(function() {
       option2: 'November 22 1963',
       option3: 'October 29 1964',
       option4: 'November 24 1962',
-      answer: 'November 22 1963'
+      answer: 'November 22 1963',
+      image: 'assets/images/q6.gif'
     },
     {
       question: 'How many men have walked on the moon?',
@@ -62,7 +68,8 @@ $(document).ready(function() {
       option2: '5',
       option3: '12',
       option4: '9',
-      answer: '12'
+      answer: '12',
+      image: 'assets/images/q7.gif'
     },
     (question8 = {
       question: 'Who has won the most Academy Awards?',
@@ -70,7 +77,8 @@ $(document).ready(function() {
       option2: 'Walt Disney',
       option3: 'Katherine Hepburn',
       option4: 'Steven Spielberg',
-      answer: 'Walt Disney'
+      answer: 'Walt Disney',
+      image: 'assets/images/q8.gif'
     }),
     {
       question: 'What is the currency of Brazil?',
@@ -78,7 +86,8 @@ $(document).ready(function() {
       option2: 'The Bhat',
       option3: 'Real',
       option4: 'Krona',
-      answer: 'Real'
+      answer: 'Real',
+      image: 'assets/images/q9.gif'
     }
   ];
 
@@ -89,6 +98,9 @@ $(document).ready(function() {
     $('#option2').html('<p>' + questions[questionindex].option2 + '</p>');
     $('#option3').html('<p>' + questions[questionindex].option3 + '</p>');
     $('#option4').html('<p>' + questions[questionindex].option4 + '</p>');
+
+    $('#imageresult').attr('src', '');
+    $('#imageresult').attr('alt', '');
   }
 
   function nextQuestion() {
@@ -108,6 +120,8 @@ $(document).ready(function() {
     $('#option2').text('');
     $('#option3').text('');
     $('#option4').text('');
+    $('#imageresult').attr('src', questions[questionindex].image);
+    $('#imageresult').attr('alt', questions[questionindex].answer + ' gif');
   }
 
   function displayCorrectAnswer() {
@@ -116,6 +130,8 @@ $(document).ready(function() {
     $('#option2').text('');
     $('#option3').text('');
     $('#option4').text('');
+    $('#imageresult').attr('src', questions[questionindex].image);
+    $('#imageresult').attr('alt', questions[questionindex].answer + ' gif');
   }
 
   function displayWrongAnswer() {
@@ -127,6 +143,8 @@ $(document).ready(function() {
     $('#option2').text('');
     $('#option3').text('');
     $('#option4').text('');
+    $('#imageresult').attr('src', questions[questionindex].image);
+    $('#imageresult').attr('alt', questions[questionindex].answer + ' gif');
   }
 
   function displayTimer() {
@@ -150,6 +168,8 @@ $(document).ready(function() {
     $('#option2').text('');
     $('#option3').text('');
     $('#option4').text('');
+    $('#imageresult').attr('src', '');
+    $('#imageresult').attr('alt', '');
 
     $('#correctno').text('Correct Answers: ' + correctno);
     $('#wrongno').text('Incorrect Answers: ' + wrongno);
