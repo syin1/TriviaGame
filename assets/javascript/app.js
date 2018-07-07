@@ -2,6 +2,7 @@ $(document).ready(function() {
   var intervalId;
   var timeoutId;
   var timer = 5;
+  var questionindex = -1;
 
   var questions = [
     {
@@ -78,13 +79,21 @@ $(document).ready(function() {
     }
   ];
 
-  function displayQuestion(i) {
-    $('#question').html('<h3>' + questions[i].question + '</h3>');
+  function displayQuestion() {
+    $('#question').html('<h3>' + questions[questionindex].question + '</h3>');
 
-    $('#option1').html('<p>' + questions[i].option1 + '</p>');
-    $('#option2').html('<p>' + questions[i].option2 + '</p>');
-    $('#option3').html('<p>' + questions[i].option3 + '</p>');
-    $('#option4').html('<p>' + questions[i].option4 + '</p>');
+    $('#option1').html('<p>' + questions[questionindex].option1 + '</p>');
+    $('#option2').html('<p>' + questions[questionindex].option2 + '</p>');
+    $('#option3').html('<p>' + questions[questionindex].option3 + '</p>');
+    $('#option4').html('<p>' + questions[questionindex].option4 + '</p>');
+  }
+
+  function nextQuestion() {
+    questionindex++;
+    displayQuestion();
+    if (questionindex === questions.length) {
+      questionindex = 0;
+    }
   }
 
   function displayTimer() {
@@ -95,18 +104,27 @@ $(document).ready(function() {
       $('#question').html('<h3>Out of Time!</h3>');
       $('#option1').text('');
       $('#option2').html(
-        '<p>The correct answer was: ' + questions[5].answer + '</p>'
+        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
       );
       $('#option3').text('');
       $('#option4').text('');
+      // countDown();
     } else {
       timer--;
     }
   }
 
+  // function countDown() {
+  //   if (questionindex === question.length) {
+  //     questionindex = 0;
+  //   }
+  //   setTimeout(displayTimer, 3000);
+  //   setTimeout(displayQuestion(questionindex), 3000);
+  // }
+
   $('.btn-primary').on('click', function() {
     displayTimer();
-    displayQuestion(5);
+    nextQuestion();
 
     intervalId = setInterval(displayTimer, 1000);
   });
@@ -115,12 +133,12 @@ $(document).ready(function() {
     clearInterval(intervalId);
     timer = 5;
 
-    if ($(this).text() === questions[5].answer) {
+    if ($(this).text() === questions[questionindex].answer) {
       $('#question').html('<h3>Correct!</h3>');
     } else {
       $('#question').html('<h3>Nope!</h3>');
       $('#option2').html(
-        '<p>The correct answer was: ' + questions[5].answer + '</p>'
+        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
       );
     }
 
@@ -133,13 +151,13 @@ $(document).ready(function() {
     clearInterval(intervalId);
     timer = 5;
 
-    if ($(this).text() === questions[5].answer) {
+    if ($(this).text() === questions[questionindex].answer) {
       $('#question').html('<h3>Correct!</h3>');
       $('#option2').text('');
     } else {
       $('#question').html('<h3>Nope!</h3>');
       $('#option2').html(
-        '<p>The correct answer was: ' + questions[5].answer + '</p>'
+        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
       );
     }
 
@@ -152,13 +170,13 @@ $(document).ready(function() {
     clearInterval(intervalId);
     timer = 5;
 
-    if ($(this).text() === questions[5].answer) {
+    if ($(this).text() === questions[questionindex].answer) {
       $('#question').html('<h3>Correct!</h3>');
       $('#option2').text('');
     } else {
       $('#question').html('<h3>Nope!</h3>');
       $('#option2').html(
-        '<p>The correct answer was: ' + questions[5].answer + '</p>'
+        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
       );
     }
 
@@ -171,13 +189,13 @@ $(document).ready(function() {
     clearInterval(intervalId);
     timer = 5;
 
-    if ($(this).text() === questions[5].answer) {
+    if ($(this).text() === questions[questionindex].answer) {
       $('#question').html('<h3>Correct!</h3>');
       $('#option2').text('');
     } else {
       $('#question').html('<h3>Nope!</h3>');
       $('#option2').html(
-        '<p>The correct answer was: ' + questions[5].answer + '</p>'
+        '<p>The correct answer was: ' + questions[questionindex].answer + '</p>'
       );
     }
 
