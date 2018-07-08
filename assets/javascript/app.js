@@ -51,7 +51,7 @@ $(document).ready(function() {
       option3: 'Marie Curie',
       option4: 'George Orwell',
       answer: 'Alexander Fleming',
-      image: 'assets/images/q5.gif'
+      image: 'assets/images/q5.jpeg'
     },
     {
       question: 'What date was President John F Kennedy assassinated?',
