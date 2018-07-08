@@ -180,7 +180,7 @@ $(document).ready(function() {
 
   function countDown() {
     if (questionindex === questions.length - 1) {
-      summaryStats();
+      setTimeout(summaryStats, 3000);
     } else {
       setTimeout(nextQuestion, 3000);
     }
