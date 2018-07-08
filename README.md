@@ -1,4 +1,4 @@
-# Timed Trivial Trivia
+# Timed Trivial Trivia!
 
 ![Trivial Trivia Image](assets/images/readme_pic.jpg)
 
